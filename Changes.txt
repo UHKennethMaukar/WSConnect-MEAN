@@ -1,0 +1,5 @@
+1) Revamp basic architecture
+2) Create template views
+3) Update the controllers
+4) Mongo Schema & Database 
+5) Implement SPAs

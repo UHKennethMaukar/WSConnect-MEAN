@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h2.page-header Login
+  form((submit)='onLoginSubmit()')
+    .form-group
+      label Username
+      // Using NgModel to link properties to components
+      input.form-control(name= 'username')
+    .form-group
+      label Password
+      input.form-control(name='password')
+    input.btn.btn-primary(type='submit', value='Login')

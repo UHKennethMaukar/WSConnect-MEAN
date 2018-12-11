@@ -1,0 +1,20 @@
+extends layout
+
+block content 
+  h2.page-header Register
+  // (type of event) = "function"
+  form((submit)='onRegisterSubmit()')
+    .form-group
+      // Using AngularJS ng-model for data binding
+      label Name
+      input.form-control(type='text', [(ngmodel)]='name', name='name')
+    .form-group
+      label Email
+      input.form-control(type='text', [(ngmodel)]='email', name='email')
+    .form-group
+      label Username
+      input.form-control(type='text', [(ngmodel)]='username', name='username')
+    .form-group
+      label Password
+      input.form-control(type='password', [(ngmodel)]='password', name='password')
+    input.btn.btn-primary(type='submit', value='Submit')

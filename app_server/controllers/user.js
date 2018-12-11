@@ -5,11 +5,11 @@ module.exports.main = function (req, res) {
 
 /* Register */
 module.exports.registerUser = function (req, res) {
-    res.render('index', { title: 'Register' });
+    res.render('register', { title: 'Register' });
   };
 
 /* Login */
 module.exports.loginUser = function (req, res) {
-    res.render('index', { title: 'Login' });
+    res.render('login', { title: 'Login' });
   };
   
