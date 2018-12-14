@@ -1,5 +1,7 @@
 extends layout
 
+include _includes/sharedHTMLfunctions
+
 block content
     .row
         .col-md-9
@@ -12,20 +14,20 @@ block content
                 .row
                     .col-xs-12.col-md-9
                         .row.list-group
-                            .col-xs-12.list-group-item
-                                h4.title Title
-                                p.ticker Ticker
-                                    small &nbsp;
-                                    span.badge.badge-success.sentiment Sentiment
-                                p.body Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam voluptatibus facilis consequatur odio porro tenetur doloribus voluptatem quidem impedit, error commodi laborum nobis beatae sint eaque. Quidem odit aperiam id!
-                                small.postDate 6/12/2018
-                                    &nbsp;
-                                    span.badge.badge-pill.badge-info.likes Agree:12
-                                    span.badge.badge-pill.badge-primary.dislikes Disagree: 8
-                                    span.badge.badge-pill.badge-light.commentcount Comments: 5
-                                    br
-                                a.btn.btn-warning.btn-md() Edit Idea
-                                &nbsp;
-                                a.btn.btn-danger.btn-md() Delete Idea
+                            each idea in ideas
+                                .col-xs-12.list-group-item
+                                    h4= idea.title
+                                    p= "Ticker: " + idea.ticker
+                                    span.badge.badge-warning= idea.sentiment
+                                    p= idea.body
+                                    small 
+                                        &nbsp;
+                                        span.badge.badge-pill.badge-info.likes Agree:12
+                                        span.badge.badge-pill.badge-primary.dislikes Disagree: 8
+                                        span.badge.badge-pill.badge-light.commentcount Comments: 5
+                                        br
+                                        a.btn.btn-warning.btn-md() Edit Idea
+                                        &nbsp;
+                                        a.btn.btn-danger.btn-md() Delete Idea
 
                                     

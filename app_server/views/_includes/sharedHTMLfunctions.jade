@@ -1,0 +1,7 @@
+mixin outputSentiment(sentiment)
+    - for (sentiment = "Bullish")
+        span.badge.badge-success Bullish
+    - for (sentiment = "Neutral")
+        span.badge.badge-warning Neutral
+    - for (sentiment = "Bearish")
+        span.badge.badge-danger Bearish
