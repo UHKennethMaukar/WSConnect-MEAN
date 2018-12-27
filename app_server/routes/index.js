@@ -12,7 +12,7 @@ var ctrlAbout = require('../controllers/about');
 router.get('/', ctrlHome.index);
 router.get('/dashboard', ctrlDashboard.main);
 router.get('/forum', ctrlForum.mainList);
-router.get('/ideas', ctrlIdeas.mainList);
+router.get('/ideas', ctrlIdeas.ideaList);
 router.get('/ideas/new', ctrlIdeas.postIdea);
 router.get('/user', ctrlUser.main);
 router.get('/user/register', ctrlUser.registerUser);

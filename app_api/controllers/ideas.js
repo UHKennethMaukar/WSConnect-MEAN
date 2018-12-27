@@ -66,8 +66,22 @@ var doAddComment = function(req, res, idea) {
 };
 
 module.exports.viewIdeas = function (req,res) {
-    sendJsonResponse(res, 200, {"status" : "success"});
-};
+    Ideas
+        .find()
+        .exec(function(err, idea) {
+            if (!idea) {
+                sendJsonResponse(res, 404, {
+                    message: "No ideas found"
+                });
+                return;
+            } else if (err) {
+                sendJsonResponse(res, 404, err);
+                return;
+            }
+            sendJsonResponse(res, 200, idea);
+        });
+    };
+    
 
 module.exports.ideasReadOne = function (req,res) {
     if (req.params && req.params.ideaid) {

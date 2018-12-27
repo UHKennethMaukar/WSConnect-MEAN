@@ -21,7 +21,26 @@ module.exports.testmainList = function (req, res) {
   }];
 */
 
-module.exports.mainList = function(req, res){
+var _showError = function (req, res, status) {
+  var title, content;
+  if (status === 404) {
+    title = "404, page not found";
+    content = "Looks like the page does not exist.";
+  } else if (status === 500) {
+    title = "500, internal server error";
+    content = "How embarrassing. There's a problem with our server.";
+  } else {
+    title = status + ", something's gone wrong";
+    content = "Oops! There seems to be a problem around here.";
+  }
+  res.status(status);
+  res.render('generic-text', {
+    title : title,
+    content : content
+  });
+};
+
+module.exports.ideaList = function(req, res){
   var requestOptions, path;
   path = '/api/ideas';
   requestOptions = {
@@ -32,13 +51,30 @@ module.exports.mainList = function(req, res){
   request(
     requestOptions,
     function(err, response, body) {
-      renderMainpage(req, res);
+      renderIdeapage(req, res, body);
     }
   );
 };
 
-var renderMainpage = function(req, res, responseBody){
-  res.render('ideas', { title: 'Your Ideas' });
+var renderIdeapage = function(req, res, responseBody){
+  var message;
+  if (!(responseBody instanceof Array)) {
+    message = "API lookup error";
+    responseBody = [];
+  } else {
+    if (!responseBody.length) {
+      message = "You have not posted any ideas yet"
+    }
+  }
+  res.render('ideas-list', {
+    title: 'Your Ideas',
+    pageHeader: {
+      title: 'WSConnect',
+      strapline: 'Connecting Investors Worldwide'
+    },
+    ideas: responseBody,
+    message: message
+  });
 };
 
 /* Post new Idea */

@@ -13,10 +13,11 @@ block content
                         h2 Your Ideas
                 .row
                     .col-xs-12.col-md-9
+                        .error= message
                         .row.list-group
                             each idea in ideas
                                 .col-xs-12.list-group-item
-                                    h4= idea.title
+                                    h4= "Title: " + idea.title
                                     p= "Ticker: " + idea.ticker
                                     span.badge.badge-warning= idea.sentiment
                                     p= idea.text
@@ -24,7 +25,7 @@ block content
                                         &nbsp;
                                         span.badge.badge-pill.badge-info.likes Agree:12
                                         span.badge.badge-pill.badge-primary.dislikes Disagree: 8
-                                        span.badge.badge-pill.badge-light.commentcount Comments: 5
+                                        span.badge.badge-pill.badge-light.commentCount Comments: 5
                                         br
                                         a.btn.btn-warning.btn-md() Edit Idea
                                         &nbsp;
