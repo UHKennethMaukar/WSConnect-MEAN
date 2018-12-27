@@ -11,7 +11,7 @@ var ideaSchema = new mongoose.Schema ({
   title: { type: String, required: true},
   ticker: { type: String, required: true},
   sentiment: { type: String, required: true},
-  body: { type: String, required: true},
+  text: { type: String, required: true},
   attachments: { type: Array }, // Array of documents that will be attached by the user. Will be further revised
   postedBy: { type: String }, 
   postedAt: { type: Date, default: Date.now() },
