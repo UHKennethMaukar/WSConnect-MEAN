@@ -1,7 +1,17 @@
 mixin outputSentiment(sentiment)
-    - for (sentiment = "Bullish")
+    if (sentiment == "Bullish")
         span.badge.badge-success Bullish
-    - for (sentiment = "Neutral")
+    else if (sentiment == "Neutral")
         span.badge.badge-warning Neutral
-    - for (sentiment = "Bearish")
+    else
         span.badge.badge-danger Bearish
+
+mixin formatDate(dateString)
+    -var date = new Date(dateString);
+    -var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    -var d = date.getDate();
+    -var m = monthNames[date.getMonth()];
+    -var y = date.getFullYear();
+    -var output = d + ' ' + m + ' ' + y;
+    =output
+

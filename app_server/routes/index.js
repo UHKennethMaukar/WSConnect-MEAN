@@ -14,6 +14,7 @@ router.get('/dashboard', ctrlDashboard.main);
 router.get('/forum', ctrlForum.mainList);
 router.get('/ideas', ctrlIdeas.ideaList);
 router.get('/ideas/new', ctrlIdeas.postIdea);
+router.post('/ideas/new', ctrlIdeas.doPostIdea);
 router.get('/user', ctrlUser.main);
 router.get('/user/register', ctrlUser.registerUser);
 router.get('/user/login', ctrlUser.loginUser);
