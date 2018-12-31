@@ -2,7 +2,7 @@ extends layout
 
 block content
     section
-    form.form-horizontal(action="", method="post", role="form")
+    form.form-horizontal(action="api/ideas/new", method="POST", role="form")
         - if (error == "val")
           .alert.alert-danger(role="alert") Oops, something went wrong. Please try again.
         fieldset

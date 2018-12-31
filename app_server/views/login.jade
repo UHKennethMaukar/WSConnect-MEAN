@@ -2,12 +2,12 @@ extends layout
 
 block content
   h2.page-header Login
-  form((submit)='onLoginSubmit()')
+  form.form-horizontal(action="api/login", method="POST", role="form")
     .form-group
       label Username
-      // Using NgModel to link properties to components
-      input.form-control(name= 'username')
+      input.form-control(name= 'username', required='')
     .form-group
       label Password
-      input.form-control(name='password')
+      input.form-control(name='password', required='')
     input.btn.btn-primary(type='submit', value='Login')
+    input(type='hidden', name='onSuccess', value='dashboard')

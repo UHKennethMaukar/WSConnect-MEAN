@@ -1,0 +1,33 @@
+extends layout
+
+block content
+    section
+    form.form-horizontal(action="api/ideas/edit", method="POST", role="form")
+        - if (error == "val")
+          .alert.alert-danger(role="alert") Oops, something went wrong. Please try again.
+        fieldset
+        .form-group(show-errors='')
+            label.control-label(for='ticker') Ticker
+            input#title.form-control(name='ticker', placeholder='Ticker symbol', required='')
+        .form-group(show-errors='')
+            label.control-label(for='title') Title
+            input#title.form-control(name='title', placeholder='Title', required='')
+        .form-group(show-errors='')
+            label.control-label(for='sentiment') Your Sentiment
+            select#category.form-control(name='sentiment', required='')
+                option(value='')  --- Please select --- 
+                    option(value='Bullish') Bullish
+                    option(value='Neutral') Neutral
+                    option(value='Bearish') Bearish
+        .form-group
+            label(for='text') Share your thoughts
+            textarea#body.form-control(rows='5', required='')
+        .form-group
+            .input-group.mb-3
+            .custom-file
+                input#inputGroupFile02.custom-file-input(type='file')
+                label.custom-file-label(for='inputGroupFile02') Upload a file
+            .input-group-append
+                span.input-group-text(id='') Upload
+        button.btn.btn-success(type='submit') Submit
+        button.btn.btn-danger(onclick="history.back()") Cancel

@@ -14,7 +14,7 @@ var sendJSONresponse = function(res, status, content) {
 
 module.exports.register = function(req, res) {
     // check required inputs provided to create an account
-    if(!req.body.username || !req.body.email || !req.body.name || !require.body.password) {
+    if(!req.body.username || !req.body.email || !req.body.name || !req.body.password) {
         sendJSONresponse(res, 400, {
             "message" : "All fields required"
         });
@@ -42,7 +42,6 @@ module.exports.register = function(req, res) {
 
 module.exports.login = function(req, res) {
     // check required inputs provided to login
-    // at this stage, login requires email and name as proxy for password
     if(!req.body.username || !req.body.password) {
         sendJSONresponse(res, 400, {
             "message" : "All fields required"
@@ -66,7 +65,7 @@ module.exports.login = function(req, res) {
                     if (redirect=='dashboard') {
                         // ... to home page
                         res.cookie("token", JSON.stringify({"id" : idToCheck, "credential" : credentialToCheck}));
-                        res.redirect('/dashboard.html');
+                        res.redirect('/dashboard');
                     } else {
                         // ... message sent 
                         sendJSONresponse(res, 200, {

@@ -10,9 +10,8 @@ var ctrlAbout = require('../controllers/about');
 
 /* GET Pages */
 router.get('/', ctrlHome.index);
-router.get('/dashboard', ctrlDashboard.main);
 router.get('/forum', ctrlForum.mainList);
-router.get('/ideas', ctrlIdeas.ideaList);
+router.get('/dashboard', ctrlDashboard.ideaList);
 router.get('/ideas/new', ctrlIdeas.postIdea);
 router.post('/ideas/new', ctrlIdeas.doPostIdea);
 router.get('/user', ctrlUser.main);

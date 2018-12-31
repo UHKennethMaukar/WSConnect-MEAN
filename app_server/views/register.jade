@@ -2,19 +2,18 @@ extends layout
 
 block content 
   h2.page-header Register
-  // (type of event) = "function"
-  form((submit)='onRegisterSubmit()')
+  form.form-horizontal(action="api/register", method="POST", role="form")
     .form-group
-      // Using AngularJS ng-model for data binding
       label Name
-      input.form-control(type='text', [(ngmodel)]='name', name='name')
+      input.form-control(name='password', required='')
     .form-group
       label Email
-      input.form-control(type='text', [(ngmodel)]='email', name='email')
+      input.form-control(name='password', required='')
     .form-group
       label Username
-      input.form-control(type='text', [(ngmodel)]='username', name='username')
+      input.form-control(name= 'username', required='')
     .form-group
       label Password
-      input.form-control(type='password', [(ngmodel)]='password', name='password')
-    input.btn.btn-primary(type='submit', value='Submit')
+      input.form-control(name='password', required='')
+    input.btn.btn-primary(type='submit', value='Register')
+    input(type='hidden', name='onSuccess', value='login')
