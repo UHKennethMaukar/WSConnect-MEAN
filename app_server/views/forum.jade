@@ -1,0 +1,14 @@
+extends layout
+
+include _includes/sharedHTMLfunctions
+
+block content
+    doctype html
+    html(ng-app="myApp")
+        head
+            script(src='/angular/angular.min.js')
+            meta(charset='utf-8')
+            title Angular Binding Test
+        body
+            input(ng-model='myInput')
+            h1 Hello {{ myInput }}

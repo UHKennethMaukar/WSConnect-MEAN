@@ -1,5 +1,5 @@
 doctype html
-html
+html(ng-app='wscApp')
   head
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     title= title
@@ -33,5 +33,7 @@ html
         .row
           .col-xs-12
             small &copy; Wall Street Connect 2018
+    script(src='/angular/angular.min.js')
+    script(src='/angular/wscApp.js')
     script(src='/javascripts/jquery-3.3.1.min.js')
     script(src='/bootstrap/js/bootstrap.min.js')
