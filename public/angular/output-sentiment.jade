@@ -1,0 +1,6 @@
+if {{ thisSentiment=="Bullish" }}
+    span.badge.badge-success Bullish
+else if {{ thisSentiment == "Neutral" }}
+    span.badge.badge-warning Neutral
+else
+    span.badge.badge-danger Bearish

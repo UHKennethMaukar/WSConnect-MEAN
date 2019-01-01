@@ -1,35 +1,39 @@
 extends layout
 
-include _includes/sharedHTMLfunctions
-
 block content
     .row
         .col-md-10
             .col-md-3
-            h2 The Forum
-            
+            h2 Welcome to the Forum
             .col-md-6s
                 .row.page-header
                     .col-lg-12
                         a.btn.btn-primary.btn-md(href="/ideas/new") Post New Idea
                         &nbsp;
                         a.btn.btn-secondary.btn-md(href="/dashboard") Your Dashboard
+                        br
+                        h6 Filter results by inputting the relevant parameters below
                 .row
                     .col-xs-12.col-md-12(ng-controller="ideaListCtrl")
-                        label(for="filter") Search By Ticker: 
-                        input#filter(type="text", ticker="filter", ng-model="textFilter")
+                        label(for="filter") Ticker: (e.g. AAPL) 
+                        input#filter(type="text", ticker="filter", ng-model="tickerFilter")
+                        br
+                        label.control-label(for='filter') Sentiment:
+                            select#filter(type="text", ticker="filter", ng-model="sentimentFilter")
+                                option(value='')  
+                                option(value='Bullish') Bullish
+                                option(value='Neutral') Neutral
+                                option(value='Bearish') Bearish
                         .error {{ message }}
                         .row.list-group
-                                .col-xs-12.list-group-item(ng-repeat="idea in data.ideas | filter: textFilter")
+                                .col-xs-12.list-group-item(ng-repeat="idea in data.ideas | filter: tickerFilter | filter: sentimentFilter")
                                     h4 {{ idea.title }}
-                                    p Ticker: {{ idea.ticker }}
-                                    span 
-                                        +outputSentiment{{ idea.sentiment }}
+                                    p Ticker: {{ idea.ticker }} 
+                                        span.badge.badge-pill.badge-light{{ idea.sentiment }}
                                     p {{ idea.text }}
                                     small Posted By: {{ idea.postedBy }}
                                     br
-                                    small.reviewTimestamp
-                                        +formatDate {{ idea.postedAt }}
+                                    small.reviewTimestamp Posted On: {{ idea.postedAt }}
                                         br
                                     small 
                                         img.Upvotes(src="/images/thumbsUp.png" width="18" height="18" alt="Image size dimensions")
