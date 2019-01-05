@@ -8,15 +8,19 @@ var ctrlUser = require('../controllers/user');
 var ctrlAbout = require('../controllers/about');
 
 
-/* GET Pages */
+// GET Pages
 router.get('/', ctrlHome.index);
 router.get('/forum', ctrlForum.mainList);
 router.get('/dashboard', ctrlDashboard.ideaList);
-router.get('/ideas/new', ctrlIdeas.postIdea);
-router.post('/ideas/new', ctrlIdeas.doPostIdea);
 router.get('/user', ctrlUser.main);
+router.get('/about', ctrlAbout.main);
+
+router.get('/ideas/new', ctrlIdeas.postIdea);
+router.get('/ideas/:ideaid', ctrlDashboard.viewIdea);
+router.get('/ideas/:ideaid/del', ctrlIdeas.deleteIdea);
+router.get('/ideas/:ideaid/edit', ctrlIdeas.editIdea);
+
 router.get('/user/register', ctrlUser.registerUser);
 router.get('/user/login', ctrlUser.loginUser);
-router.get('/about', ctrlAbout.main);
 
 module.exports = router;

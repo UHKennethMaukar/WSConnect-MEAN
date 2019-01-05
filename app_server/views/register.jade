@@ -2,18 +2,18 @@ extends layout
 
 block content 
   h2.page-header Register
-  form.form-horizontal(action="api/register", method="POST", role="form")
+  form.form-horizontal(action="/api/user/register", method="POST", role="form")
     .form-group
       label Name
-      input.form-control(name='password', required='')
+      input.form-control(name='name', required='')
     .form-group
       label Email
-      input.form-control(name='password', required='')
+      input.form-control(name='email', required='')
     .form-group
       label Username
-      input.form-control(name= 'username', required='')
+      input.form-control(name='username', required='')
     .form-group
       label Password
       input.form-control(name='password', required='')
-    input.btn.btn-primary(type='submit', value='Register')
+    input.btn.btn-primary(type='submit', value='register')
     input(type='hidden', name='onSuccess', value='login')

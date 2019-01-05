@@ -5,7 +5,7 @@ module.exports.index = function(req, res) {
 
 // cut-down code from Getting MEAN: Chapter 11
 var mongoose = require('mongoose');
-var User = mongoose.model('User');
+var User = mongoose.model('Users');
 
 var sendJSONresponse = function(res, status, content) {
     res.status(status);  
@@ -33,9 +33,10 @@ module.exports.register = function(req, res) {
         if (err) {
             sendJSONresponse(res, 404, err);
         } else {
-            sendJSONresponse(res, 200, {
-                "message" : "User account created for " + req.body.username
-           });
+           // sendJSONresponse(res, 200, {
+           //     "message" : "User account created for " + req.body.username
+         //  });
+           res.redirect('/user/login');
         }
     })
 }
@@ -73,11 +74,13 @@ module.exports.login = function(req, res) {
                         });
                     }   
                 } else {
+
+                    res.redirect('/user');
                     // and success message sent 
-                    sendJSONresponse(res, 200, {
-                        "message" : "User '" + user.name + "' logged in as " + user.username
-                    });
-                }   
+                    // sendJSONresponse(res, 200, {
+                    //     "message" : "User '" + user.name + "' logged in as " + user.username
+                    // });
+                }  
             } else {
                 // user "not authenticated" and message sent 
                 sendJSONresponse(res, 401, {

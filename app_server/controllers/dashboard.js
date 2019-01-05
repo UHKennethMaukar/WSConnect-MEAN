@@ -63,3 +63,31 @@ var renderIdeapage = function(req, res, responseBody){
     message: message
   });
 };
+
+module.exports.viewIdea = function(req, res){
+  var requestOptions, path;
+  path = "/api/ideas/" + req.params.ideaid;
+  requestOptions = {
+    url: apiOptions.server + path,
+    method: "GET",
+    json: {},
+  };
+  request(
+    requestOptions,
+    function(err, response, body) {
+      var data = body;
+      renderViewIdeaPage(req, res, data);
+    }
+  );
+};
+
+var renderViewIdeaPage = function(req, res, ideaDetail){
+  res.render('idea-Info', {
+    title: ideaDetail.title,
+    pageHeader: {
+      title: 'WSConnect',
+      strapline: 'Connecting Investors Worldwide'
+    },
+    idea: ideaDetail
+  });
+};

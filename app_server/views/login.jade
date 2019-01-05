@@ -2,7 +2,7 @@ extends layout
 
 block content
   h2.page-header Login
-  form.form-horizontal(action="api/login", method="POST", role="form")
+  form.form-horizontal(action="/api/user/login", method="POST", role="form")
     .form-group
       label Username
       input.form-control(name= 'username', required='')

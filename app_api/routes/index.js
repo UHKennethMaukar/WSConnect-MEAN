@@ -1,14 +1,13 @@
 var express = require('express');
 var router = express.Router();
-
 var ctrlIdeas = require('../controllers/ideas');
 //var ctrlComments = require('../controllers/comments');
 var ctrlAuth = require('../controllers/userAuthentication');
 
 // Authentication
 router.get('/',ctrlAuth.index);
-router.post('user/register',ctrlAuth.register);
-router.post('user/login',ctrlAuth.login);
+router.post('/user/register',ctrlAuth.register);
+router.post('/user/login',ctrlAuth.login);
 
 // Ideas
 router.get('/ideas', ctrlIdeas.viewIdeas);

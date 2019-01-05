@@ -16,7 +16,7 @@ module.exports.createIdeas = function (req,res) {
         if (err) {
             sendJsonResponse(res, 400, err);
         } else {
-            sendJsonResponse(res, 201, idea);
+            res.redirect('/dashboard');
         }
     });
 };
@@ -90,7 +90,7 @@ module.exports.ideasUpdateOne = function (req,res) {
                 if (err) {
                     sendJsonResponse(res, 404, err);
                 } else {
-                    sendJsonResponse(res, 200, idea);
+                    res.redirect('/dashboard');
                 }
             });
         }

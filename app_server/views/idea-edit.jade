@@ -2,32 +2,33 @@ extends layout
 
 block content
     section
-    form.form-horizontal(action="api/ideas/new", method="POST", role="form")
+    form.form-horizontal(action="/api/ideas/#{idea._id}?_method=PUT", method="POST", role="form")
         - if (error == "val")
           .alert.alert-danger(role="alert") Oops, something went wrong. Please try again.
         fieldset
         .form-group(show-errors='')
             label.control-label(for='ticker') Ticker
-            input#title.form-control(name='ticker', placeholder='Ticker symbol', required='')
+            input#title.form-control(name='ticker', value=idea.ticker, required='')
         .form-group(show-errors='')
             label.control-label(for='title') Title
-            input#title.form-control(name='title', placeholder='Title', required='')
+            input#title.form-control(name='title', value=idea.title, required='')
         .form-group(show-errors='')
             label.control-label(for='sentiment') Your Sentiment
             select#category.form-control(name='sentiment', required='')
-                option(value='')  --- Please select --- 
+                option(value=idea.sentiment) #{idea.sentiment}
                     option(value='Bullish') Bullish
                     option(value='Neutral') Neutral
                     option(value='Bearish') Bearish
         .form-group
             label(for='text') Share your thoughts
-            textarea#body.form-control(rows='5', required='')
+            textarea#body.form-control(name='text', rows='5', required='') #{idea.text}
         .form-group
             .input-group.mb-3
             .custom-file
                 input#inputGroupFile02.custom-file-input(type='file')
-                label.custom-file-label(for='inputGroupFile02') Upload a file
+                label.custom-file-label(for='inputGroupFile02') Not implemented yet
             .input-group-append
                 span.input-group-text(id='') Upload
         button.btn.btn-success(type='submit') Submit
-        button.btn.btn-danger(onclick="history.back()") Cancel
+        br
+        a(href='/dashboard') Cancel

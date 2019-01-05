@@ -15,19 +15,29 @@ module.exports.registerUser = function (req, res) {
 
 /* Login */
 module.exports.loginUser = function(req, res){
-  var requestOptions, path;
-  path = '/user/login';
-  requestOptions = {
-    url: apiOptions.server + path,
-    method: "POST",
-    json: {},
-  };
-  request(
-    requestOptions,
-    function(err, response, body) {
-      renderLoginpage(req, res, body);
-    }
-  );
+
+  res.render('login', {
+    title: 'Please Login',
+    pageHeader: {
+      title: 'WSConnect',
+      strapline: 'Connecting Investors Worldwide'
+    },
+  });
+
+  // var requestOptions, path;
+  // path = '/user/login';
+  // requestOptions = {
+  //   url: apiOptions.server + path,
+  //   method: "POST",
+  //   json: {},
+  // };
+
+  // request(
+  //   requestOptions,
+  //   function(err, response, body) {
+  //     renderLoginpage(req, res, body);
+  //   }
+  // );
 };
 
 var renderLoginpage = function(req, res){

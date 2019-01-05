@@ -1,5 +1,5 @@
 var mongoose = require( 'mongoose' );
-var jwt = require('jsonwebtoken');
+//var jwt = require('jsonwebtoken');
 
 var userSchema = new mongoose.Schema({
     name: {
@@ -23,7 +23,7 @@ var userSchema = new mongoose.Schema({
     }
 });
 
-mongoose.model('User', userSchema, 'wscUsers');
+mongoose.model('Users', userSchema, 'wscUsers');
 
   /* Initial data entry
   db.wscUsers.save({

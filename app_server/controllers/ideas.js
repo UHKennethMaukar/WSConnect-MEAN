@@ -8,47 +8,68 @@ if (process.env.NODE_ENV === 'production') {
 }
 */
 
-/* Post new Idea */
+// Post New Idea
+module.exports.postIdea = function(req, res){
+  renderIdeaForm(req, res);
+};
+
 var renderIdeaForm = function (req, res) {
-  res.render('newIdea', {
+  res.render('idea-new', {
     title: 'Post new Idea',
     error: req.query.err
   });
 };
 
-module.exports.postIdea = function(req, res){
-    renderIdeaForm(req, res);
+// Delete Idea
+module.exports.deleteIdea = function(req, res){
+  var requestOptions, path;
+  path = "/api/ideas/" + req.params.ideaid;
+  requestOptions = {
+    url: apiOptions.server + path,
+    method: "DELETE",
+    json: {},
+  };
+  request(
+    requestOptions,
+    function(err, response, body) {
+      var data = body;
+      renderDeleteForm(req, res, data);
+    }
+  );
 };
 
-module.exports.doPostIdea = function (req, res) {
-  var requestOptions, path, postdata;
-  path = "api/ideas/new"
-  postdata = {
-    title: req.body.title,
-    ticker: req.body.ticker,
-    sentiment: req.body.sentiment,
-    text: req.body.text,
+var renderDeleteForm = function (req, res) {
+  res.render('idea-del', {
+    title: 'Delete Idea',
+    error: req.query.err
+  });
+};
+
+//Edit Idea
+module.exports.editIdea = function(req, res){
+  var requestOptions, path;
+  path = "/api/ideas/" + req.params.ideaid;
+  requestOptions = {
+    url: apiOptions.server + path,
+    method: "GET",
+    json: {},
   };
-    requestOptions = {
-      url : apiOptions.server + path,
-      method: "POST",
-      json : postdata
-    };
-    if (!postdata.ticker || !postdata.title || !postdata.sentiment || !postdata.text) {
-      res.redirect('/ideas/new?err=val');
-    } else {
-      request(
-        requestOptions,
-        function(err, response, body){
-          if (response.statusCode === 201) {
-            res.redirect('/dashboard');
-          } else if (response.statusCode === 400 && body.name && body.name === "ValidationError") {
-            res.redirect('/ideas/new?err=val');
-          } else {
-            console.log(body);
-            _showError(req, res, response.statusCode);
-          }
-        }
-      );
+  request(
+    requestOptions,
+    function(err, response, body) {
+      var data = body;
+      renderEditForm(req, res, data);
     }
-  };
+  );
+};
+
+var renderEditForm = function (req, res, responseBody) {
+  res.render('idea-edit', {
+    title: 'Edit Idea',
+    pageHeader: {
+      title: 'WSConnect',
+      strapline: 'Connecting Investors Worldwide'
+    },
+    idea: responseBody
+  });
+};
