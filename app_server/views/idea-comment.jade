@@ -5,7 +5,7 @@ include _includes/sharedHTMLfunctions
 block content
     .row.page-header
         .col-lg-12
-            a.btn.btn-info.btn-md(href="/dashboard") Back to Dashboard
+            a.btn.btn-info.btn-md(href="/forum") Back to Forum
             hr
     .row
         .col-xs-12.col-md-9
@@ -16,6 +16,8 @@ block content
                     span 
                         +outputSentiment(idea.sentiment)
                     p= idea.text
+                    small= idea.postedBy
+                    br
                     small.reviewTimestamp
                         +formatDate(idea.postedAt)
                     br
@@ -27,10 +29,6 @@ block content
                         img.Comments(src="/images/commentIcon.png" width="20" height="20" alt="Image size dimensions")
                         &nbsp;
                         small= idea.comments.length
-                        br
-                        a.btn.btn-warning.btn-md(href="/ideas/#{idea._id}/edit") Edit Idea
-                        &nbsp;
-                        a.btn.btn-danger.btn-md(href="/ideas/#{idea._id}/del") Delete Idea
                         hr
             .row
                 .col-xs-4.list-group-item
@@ -46,4 +44,25 @@ block content
                             small.reviewTimestamp Posted: 
                                 +formatDate(comment.commentAt)
                             hr
-                            
+    .row
+        .col-xs-12
+        h4 Vote and Comment
+            form.form-horizontal(action="/api/ideas/#{idea._id}/comments", method="POST", role="form")
+                - if (error == "val")
+                fieldset
+                .form-group(show-errors='')
+                .btn-group.btn-group-toggle(data-toggle='buttons')
+                label.btn.btn-primary
+                    input#option1(type='radio', name='vote', value='1', autocomplete='off')
+                    |  Agree
+                label.btn.btn-primary
+                    input#option2(type='radio', name='vote', value='0', autocomplete='off')
+                    |  Neutral
+                label.btn.btn-primary.active
+                    input#option3(type='radio', name='vote', value='-1', autocomplete='off')
+                    |  Disagree
+
+                .form-group
+                    textarea#body.form-control(name='commentText', rows='3', placeholder='Your Comment Here', required='')
+                button.btn.btn-success(type='submit') Submit
+                button.btn.btn-danger(onclick="history.back()") Cancel

@@ -38,11 +38,12 @@ block content
                                         small 
                                             img.Upvotes(src="/images/thumbsUp.png" width="18" height="18" alt="Image size dimensions")
                                             &nbsp; 
-                                            small {{ idea.upvoteCount }}
-                                            br
-                                            img.Downvotes(src="/images/thumbsDown.png" width="18" height="18" alt="Image size dimensions")
-                                            &nbsp; 
-                                            small {{ idea.downvoteCount }}
+                                            small {{ idea.voteCount }}
                                             br
                                             img.Comments(src="/images/commentIcon.png" width="20" height="20" alt="Image size dimensions")
+                                            &nbsp;
+                                            small {{ idea.comments.length }}
+                                            br
+                                            br
+                                            a.btn.btn-info.btn-md(href="/ideas/{{ idea._id }}/comments") View/Comment
                                             hr

@@ -1,7 +1,7 @@
 // Render Angular Page
 module.exports.mainList = function(req, res){
-      renderForumPage(req, res);
-    };
+  renderForumPage(req, res);
+};
 
 var renderForumPage = function(req, res){
   res.render('forum-list', {
@@ -12,3 +12,7 @@ var renderForumPage = function(req, res){
     }
   });
 };
+
+// module.exports.upvoteIdea = function(req,res){
+//   console.log(upvoted)
+// }

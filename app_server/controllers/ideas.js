@@ -73,3 +73,31 @@ var renderEditForm = function (req, res, responseBody) {
     idea: responseBody
   });
 };
+
+module.exports.postComment = function(req, res){
+  var requestOptions, path;
+  path = "/api/ideas/" + req.params.ideaid;
+  requestOptions = {
+    url: apiOptions.server + path,
+    method: "GET",
+    json: {},
+  };
+  request(
+    requestOptions,
+    function(err, response, body) {
+      var data = body;
+      renderViewComments(req, res, data);
+    }
+  );
+};
+
+var renderViewComments = function (req, res, responseBody) {
+  res.render('idea-comment', {
+    title: 'Viewing Idea',
+    pageHeader: {
+      title: 'WSConnect',
+      strapline: 'Connecting Investors Worldwide'
+    },
+    idea: responseBody
+  });
+};

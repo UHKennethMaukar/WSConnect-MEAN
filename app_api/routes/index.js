@@ -16,7 +16,8 @@ router.get('/ideas/:ideaid', ctrlIdeas.ideasReadOne);
 router.put('/ideas/:ideaid', ctrlIdeas.ideasUpdateOne);
 router.delete('/ideas/:ideaid', ctrlIdeas.ideasDeleteOne);
 
-router.put('/ideas/:ideaid', ctrlIdeas.ideasUpvoteOne);
+// Comments
+router.post('/ideas/:ideaid/comments', ctrlIdeas.commentsCreate);
 
 /* 
 //Comments

@@ -119,34 +119,79 @@ module.exports.ideasDeleteOne = function (req,res) {
     }
 };
 
-module.exports.ideasUpvoteOne = function (req,res) {
-    if (!req.params.ideaid) {
+module.exports.commentsCreate = function(req, res) {
+    var ideaid = req.params.ideaid;
+    if (ideaid) {
+        Ideas
+            .findById(ideaid)
+            .select('comments')
+            .exec(
+                function(err, idea) {
+                    if (err) {
+                        sendJsonResponse(res, 400, err);
+                    } else {
+                        doAddComment(req, res, idea);
+                    }
+                }
+            ); 
+    } else {
         sendJsonResponse(res, 404, {
-            "message": "Not found, ideaid is required"
+            "message": "Not found, ideaid required"
         });
-        return;
     }
+};
+
+var doAddComment = function(req, res, idea) {
+    if (!idea) {
+        sendJsonResponse(res, 404, {
+            "message": "ideaid not found"
+        });
+    } else {
+        idea.comments.push({
+            vote: req.body.vote,
+            commentText: req.body.commentText,
+            commentBy: req.body.commentBy,
+        });
+        idea.save(function(err, idea) {
+            var thisComment;
+            if (err) {
+                sendJsonResponse(res, 400, err);
+            } else {
+                updateVoteCount(idea._id);
+                thisComment = idea.comments[idea.comments.length - 1];
+                res.redirect('/forum');
+            }
+        });
+    }
+};
+
+var updateVoteCount = function(ideaid) {
     Ideas
-        .findById(req.params.ideaid)
+        .findById(ideaid)
+        .select('vote comments')
         .exec(
             function(err, idea) {
-                if (!idea) {
-                    sendJsonResponse(res, 404, {
-                        "message": "ideaid not found"
-                    });
-                    return;
-                } else if (err) {
-                    sendJsonResponse(res, 400, err);
-                    return;
-                }
-                idea.upvoteCount = idea.upvoteCount + 1
-                idea.save(function(err, idea) {
-                if (err) {
-                    sendJsonResponse(res, 404, err);
-                } else {
-                    res.redirect('/dashboard');
+                if(!err) {
+                    doSetVoteCount(idea);
                 }
             });
+};
+
+var doSetVoteCount =  function(idea) {
+    var i, commentCount, voteTotal;
+    if (idea.comments && idea.comments.length > 0) {
+        commentCount = idea.comments.length;
+        voteTotal = 0;
+        for (i = 0; i < commentCount; i++) {
+            voteTotal = voteTotal + idea.comments[i].vote;
         }
-    );
+        idea.voteCount = voteTotal;
+        idea.save(function(err) {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log("Vote count updated to", voteTotal);
+            }
+        });
+    }
 };

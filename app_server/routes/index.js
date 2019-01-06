@@ -20,6 +20,8 @@ router.get('/ideas/:ideaid', ctrlDashboard.viewIdea);
 router.get('/ideas/:ideaid/del', ctrlIdeas.deleteIdea);
 router.get('/ideas/:ideaid/edit', ctrlIdeas.editIdea);
 
+router.get('/ideas/:ideaid/comments', ctrlIdeas.postComment);
+
 router.get('/user/register', ctrlUser.registerUser);
 router.get('/user/login', ctrlUser.loginUser);
 
