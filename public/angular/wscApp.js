@@ -1,8 +1,9 @@
 angular.module('wscApp', []);
 
-var ideaListCtrl = function ($scope, wscData) {
+var forumListCtrl = function ($scope, wscData) {
     wscData
         .success(function(data) {
+            $scope.message = data.length > 0 ? "" : "No ideas found";
             $scope.data = { ideas: data };
         })
         .error(function (e) {
@@ -30,20 +31,18 @@ var wscStaticData = function () {
 };
 */
 
-/*
-var TO_FIX_outputSentiment = function () {
+var outputSentiment = function () {
     return {
         scope: {
             thisSentiment : '=sentiment'
         },
-        templateUrl: '/angular/output-sentiment.html'
+        templateUrl: '/angular/output-sentiment.jade'
     };
 };
-*/
 
 angular
     .module('wscApp')
-    .controller('ideaListCtrl', ideaListCtrl)
+    .controller('forumListCtrl', forumListCtrl)
     .service('wscData', wscData)
-//  .directive('TO_FIX_outputSentiment', outputSentiment);
+    .directive('outputSentiment', sentiment="idea.sentiment");
     

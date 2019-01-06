@@ -12,6 +12,7 @@ module.exports.createIdeas = function (req,res) {
         ticker: req.body.ticker,
         sentiment: req.body.sentiment,
         text: req.body.text,
+        postedBy: req.body.postedBy,
     }, function(err, idea) {
         if (err) {
             sendJsonResponse(res, 400, err);
@@ -116,4 +117,36 @@ module.exports.ideasDeleteOne = function (req,res) {
             "message": "No ideaid"
         });
     }
+};
+
+module.exports.ideasUpvoteOne = function (req,res) {
+    if (!req.params.ideaid) {
+        sendJsonResponse(res, 404, {
+            "message": "Not found, ideaid is required"
+        });
+        return;
+    }
+    Ideas
+        .findById(req.params.ideaid)
+        .exec(
+            function(err, idea) {
+                if (!idea) {
+                    sendJsonResponse(res, 404, {
+                        "message": "ideaid not found"
+                    });
+                    return;
+                } else if (err) {
+                    sendJsonResponse(res, 400, err);
+                    return;
+                }
+                idea.upvoteCount = idea.upvoteCount + 1
+                idea.save(function(err, idea) {
+                if (err) {
+                    sendJsonResponse(res, 404, err);
+                } else {
+                    res.redirect('/dashboard');
+                }
+            });
+        }
+    );
 };

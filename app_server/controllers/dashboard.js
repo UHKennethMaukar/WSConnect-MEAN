@@ -8,24 +8,24 @@ if (process.env.NODE_ENV === 'production') {
 }
 */
 
-var _showError = function (req, res, status) {
-  var title, content;
-  if (status === 404) {
-    title = "404, page not found";
-    content = "Looks like the page does not exist.";
-  } else if (status === 500) {
-    title = "500, internal server error";
-    content = "How embarrassing. There's a problem with our server.";
-  } else {
-    title = status + ", something's gone wrong";
-    content = "Oops! There seems to be a problem around here.";
-  }
-  res.status(status);
-  res.render('generic-text', {
-    title : title,
-    content : content
-  });
-};
+// var _showError = function (req, res, status) {
+//   var title, content;
+//   if (status === 404) {
+//     title = "404, page not found";
+//     content = "Looks like the page does not exist.";
+//   } else if (status === 500) {
+//     title = "500, internal server error";
+//     content = "How embarrassing. There's a problem with our server.";
+//   } else {
+//     title = status + ", something's gone wrong";
+//     content = "Oops! There seems to be a problem around here.";
+//   }
+//   res.status(status);
+//   res.render('generic-text', {
+//     title : title,
+//     content : content
+//   });
+// };
 
 module.exports.ideaList = function(req, res){
   var requestOptions, path;
