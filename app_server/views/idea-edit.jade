@@ -6,6 +6,7 @@ block content
         - if (error == "val")
           .alert.alert-danger(role="alert") Oops, something went wrong. Please try again.
         fieldset
+        input(type='hidden', id='userID', name='postedBy', value='')
         .form-group(show-errors='')
             label.control-label(for='ticker') Ticker
             input#title.form-control(name='ticker', value=idea.ticker, required='')
@@ -32,3 +33,21 @@ block content
         button.btn.btn-success(type='submit') Submit
         br
         a(href='/dashboard') Cancel
+
+    script.
+        var token = findCookie('token', document.cookie);
+        if (token) {
+        tokenObject = JSON.parse(decodeURIComponent(token));
+        id = tokenObject.id;
+        //- document.querySelector('h1').textContent += " " + id;
+        //- document.querySelector('p').innerHTML = "Please do what ever you like!";
+        }
+        function findCookie(name,cookieString) {
+        console.log("finding cookie ...")
+        cookieString = '; ' + cookieString;
+        console.log("in " + cookieString);
+        var splitOnName = cookieString.split("; " + name + "=");
+        if (splitOnName.length == 2) return splitOnName[1].split(";")[0]
+        }
+        console.log(id);
+        document.getElementById("userID").value = id;
