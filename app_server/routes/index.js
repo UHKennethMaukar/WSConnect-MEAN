@@ -5,7 +5,7 @@ var ctrlDashboard = require('../controllers/dashboard');
 var ctrlForum = require('../controllers/forum');
 var ctrlIdeas = require('../controllers/ideas');
 var ctrlUser = require('../controllers/user');
-var ctrlAbout = require('../controllers/about');
+var ctrlLogout = require('../controllers/logout');
 
 
 // GET Pages
@@ -13,7 +13,7 @@ router.get('/', ctrlHome.index);
 router.get('/forum', ctrlForum.mainList);
 router.get('/dashboard', ctrlDashboard.ideaList);
 router.get('/user', ctrlUser.main);
-router.get('/about', ctrlAbout.main);
+router.get('/logout', ctrlLogout.main);
 
 router.get('/ideas/new', ctrlIdeas.postIdea);
 router.get('/ideas/:ideaid', ctrlDashboard.viewIdea);

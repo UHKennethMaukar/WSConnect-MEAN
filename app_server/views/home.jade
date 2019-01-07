@@ -10,7 +10,79 @@ block content
   .row
     .col-md-6
       h3 What's Trending?
-      ol(type='1')
+      table.table.table-hover
+        thead
+          tr
+            th(scope='col') Ticker
+            th(scope='col') Community Outlook
+            th(scope='col') Recent Activity
+        tbody
+          tr.table-secondary
+            th(scope='row') AAPL
+            td 
+              .progress
+                .progress-bar(role='progressbar', style='width: 20%', aria-valuenow='20', aria-valuemin='0', aria-valuemax='100') Bear
+                .progress-bar.bg-success(role='progressbar', style='width: 40%', aria-valuenow='35', aria-valuemin='0', aria-valuemax='100') Bull
+                .progress-bar.bg-warning(role='progressbar', style='width: 40%', aria-valuenow='45', aria-valuemin='0', aria-valuemax='100') Neutral
+            td 12 new ideas
+          tr.table-secondary
+            th(scope='row') TSLA
+            td 
+              .progress
+                .progress-bar(role='progressbar', style='width: 40%', aria-valuenow='35', aria-valuemin='0', aria-valuemax='100') Bear
+                .progress-bar.bg-success(role='progressbar', style='width: 40%', aria-valuenow='45', aria-valuemin='0', aria-valuemax='100') Bull
+                .progress-bar.bg-warning(role='progressbar', style='width: 20%', aria-valuenow='15', aria-valuemin='0', aria-valuemax='100') Neutral
+            td 9 new ideas
+          tr.table-secondary
+            th(scope='row') BABA
+            td 
+              .progress
+                .progress-bar(role='progressbar', style='width: 15%', aria-valuenow='35', aria-valuemin='0', aria-valuemax='100') Bear
+                .progress-bar.bg-success(role='progressbar', style='width: 50%', aria-valuenow='45', aria-valuemin='0', aria-valuemax='100') Bull
+                .progress-bar.bg-warning(role='progressbar', style='width: 35%', aria-valuenow='15', aria-valuemin='0', aria-valuemax='100') Neutral
+            td 6 new ideas
+          tr.table-secondary
+            th(scope='row') NVDA
+            td 
+              .progress
+                .progress-bar(role='progressbar', style='width: 30%', aria-valuenow='35', aria-valuemin='0', aria-valuemax='100') Bear
+                .progress-bar.bg-success(role='progressbar', style='width: 30%', aria-valuenow='45', aria-valuemin='0', aria-valuemax='100') Bull
+                .progress-bar.bg-warning(role='progressbar', style='width: 40%', aria-valuenow='15', aria-valuemin='0', aria-valuemax='100') Neutral
+            td 4 new ideas
+          tr.table-secondary
+            th(scope='row') BARC
+            td 
+              .progress
+                .progress-bar(role='progressbar', style='width: 20%', aria-valuenow='35', aria-valuemin='0', aria-valuemax='100') Bear
+                .progress-bar.bg-success(role='progressbar', style='width: 35%', aria-valuenow='45', aria-valuemin='0', aria-valuemax='100') Bull
+                .progress-bar.bg-warning(role='progressbar', style='width: 45%', aria-valuenow='15', aria-valuemin='0', aria-valuemax='100') Neutral
+            td 3 new ideas
     .col-md-6
       h3 Markets Today
-      p (Market Data Feed API here)
+      table.table.table-hover
+        thead
+          tr
+            th(scope='col') Index
+            th(scope='col') Last
+            th(scope='col') %Change
+        tbody
+          tr.table-secondary
+            th(scope='row') S&amp;P 500
+            td 2531.94
+            td +3.43
+          tr.table-secondary
+            th(scope='row') FTSE 100
+            td 6837.42
+            td +2.16
+          tr.table-secondary
+            th(scope='row') SHANGHAI COMP
+            td 2533.09
+            td +0.72
+          tr.table-secondary
+            th(scope='row') NIKKEI 225
+            td 20038.97
+            td +2.44
+          tr.table-secondary
+            th(scope='row') HANG SENG
+            td 25789.65
+            td +0.64

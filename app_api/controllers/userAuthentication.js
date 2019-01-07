@@ -3,7 +3,6 @@ module.exports.index = function(req, res) {
     res.render('index', { title: 'API homepage' });
 };
 
-// cut-down code from Getting MEAN: Chapter 11
 var mongoose = require('mongoose');
 var User = mongoose.model('Users');
 
@@ -50,7 +49,7 @@ module.exports.login = function(req, res) {
         return;
     }
 
-    // the following simple check replaces use of Passport Authentication
+    // Replacing use of Passport Authentication
     var idToCheck = req.body.username; 
     var credentialToCheck = req.body.password;
     var redirect = req.body.onSuccess;

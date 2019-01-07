@@ -87,6 +87,7 @@ module.exports.ideasUpdateOne = function (req,res) {
                 idea.ticker = req.body.ticker;
                 idea.sentiment = req.body.sentiment;
                 idea.text = req.body.text;
+                idea.postedBy = req.body.postedBy;
                 idea.save(function(err, idea) {
                 if (err) {
                     sendJsonResponse(res, 404, err);

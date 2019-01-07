@@ -39,3 +39,19 @@ block content
                                         br
                                         a.btn.btn-warning.btn-md(href="/ideas/#{idea._id}") View Idea
                                         hr
+    script.
+        var token = findCookie('token', document.cookie);
+        if (token) {
+        tokenObject = JSON.parse(decodeURIComponent(token));
+        id = tokenObject.id;
+        //- document.querySelector('h1').textContent += " " + id;
+        //- document.querySelector('p').innerHTML = "Please do what ever you like!";
+        }
+        function findCookie(name,cookieString) {
+        console.log("finding cookie ...")
+        cookieString = '; ' + cookieString;
+        console.log("in " + cookieString);
+        var splitOnName = cookieString.split("; " + name + "=");
+        if (splitOnName.length == 2) return splitOnName[1].split(";")[0]
+        }
+        console.log(id)

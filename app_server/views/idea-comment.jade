@@ -38,6 +38,8 @@ block content
                         .row
                         .comment
                             .well.well-sm.review-header
+                            small Voted: 
+                                +outputVote(comment.vote)
                             p !{(comment.commentText).replace(/\n/g, '<br/>')}
                             span.reviewAuthor &ensp; - #{comment.commentBy}
                             &ensp;
@@ -50,6 +52,7 @@ block content
             form.form-horizontal(action="/api/ideas/#{idea._id}/comments", method="POST", role="form")
                 - if (error == "val")
                 fieldset
+                input(type='hidden', id='userID', name='commentBy', value='')
                 .form-group(show-errors='')
                 .btn-group.btn-group-toggle(data-toggle='buttons')
                 label.btn.btn-primary
@@ -66,3 +69,21 @@ block content
                     textarea#body.form-control(name='commentText', rows='3', placeholder='Your Comment Here', required='')
                 button.btn.btn-success(type='submit') Submit
                 button.btn.btn-danger(onclick="history.back()") Cancel
+
+    script.
+        var token = findCookie('token', document.cookie);
+        if (token) {
+        tokenObject = JSON.parse(decodeURIComponent(token));
+        id = tokenObject.id;
+        //- document.querySelector('h1').textContent += " " + id;
+        //- document.querySelector('p').innerHTML = "Please do what ever you like!";
+        }
+        function findCookie(name,cookieString) {
+        console.log("finding cookie ...")
+        cookieString = '; ' + cookieString;
+        console.log("in " + cookieString);
+        var splitOnName = cookieString.split("; " + name + "=");
+        if (splitOnName.length == 2) return splitOnName[1].split(";")[0]
+        }
+        console.log(id);
+        document.getElementById("userID").value = id;

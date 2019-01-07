@@ -13,7 +13,7 @@ var ideaSchema = new mongoose.Schema ({
   sentiment: { type: String, required: true},
   text: { type: String, required: true},
   attachments: { type: Array }, // Array of documents that will be attached by the user. Will be further revised
-  postedBy: { type: String }, 
+  postedBy: { type: String, required: true}, 
   postedAt: { type: Date, default: Date.now() },
   voteCount: { type: Number, default: 0 },
   comments: [commentSchema]
