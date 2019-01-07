@@ -19,6 +19,6 @@ mixin outputVote(vote)
     if (vote == 1)
         img.Upvote(src="/images/thumbsUp.png" width="18" height="18" alt="Image size dimensions")
     else if (vote == 0)
-        img.Downvote(src="/images/thumbsDown.png" width="18" height="18" alt="Image size dimensions")
-    else
         img.Neutral(src="/images/unsure.png" width="18" height="18" alt="Image size dimensions")
+    else
+        img.Downvote(src="/images/thumbsDown.png" width="18" height="18" alt="Image size dimensions")
