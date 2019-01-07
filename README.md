@@ -1,20 +1,15 @@
-Proposed Architecture: 
-/home: Most recent posts, What's Trending?, Market prices 
-/register
-/login
-/dashboard: View own posts, user statistics, watchlist
-/forum: View all posts, sort/filterBy() 
-/ideas: /new, /edit, delete
+WSConnect
+    Installation:
+        -npm install
 
-Proposed Functionalities:
--> Forum: Filter, sort
--> Ideas: Upvote/Downvote, Comment
--> User: Endorse, 
-Statistics: #Join/Last Activity Date #Ideas, #Upvotes(Ratio), #Endorsements
+    To Import Database:
+        -mongoimport --db WSConnect --collection wscIdeas --file wscIdeas_collection.json
+        -mongoimport --db WSConnect --collection wscUsers --file wscUsers_collection.json
+    Files are stored in the included db folder
 
-Other proposed features:
-Watchlist: 
-/watchlist +add, -remove,
--> View ideas by auto-filtering forum results
+    Running the App:
+        -node OR -nodemon
+        App will run on "localhost:3000" domain
 
-
+    Azure devOps Git Repo:
+        https://dev.azure.com/7wcm0035-km18acb/_git/WSConnect-km18acb

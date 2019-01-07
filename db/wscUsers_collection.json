@@ -1,0 +1,11 @@
+{"_id":{"$oid":"5c28b95fdaab2d56798cf657"},"name":"Admin","email":"administrator1@admin.org","username":"Admin","password":"Admin123"}
+{"_id":{"$oid":"5c28ca97a02c351390bbf7d7"},"username":"jdoe1","email":"jdoe@test.org","name":"John Doe","password":"Jdoe","__v":0}
+{"_id":{"$oid":"5c301edef3e7362d88824ada"},"username":"Jdoe","email":"Test","name":"Test","password":"test","__v":0}
+{"_id":{"$oid":"5c3027e1d070b53a34cb5c01"},"username":"kenneth_maukar","email":"kenneth_maukar@yahoo.com.sg","name":"Heath Akura","password":"tester1","__v":0}
+{"_id":{"$oid":"5c302886bed2bb3dc4f8ecd0"},"username":"kenneth_maukar2","email":"kenneth_maukar@yahoo.com.sg2","name":"Heath Akura","password":"tester12","__v":0}
+{"_id":{"$oid":"5c3028dd76879d17f879aff6"},"username":"kenneth_maukar3","email":"kenneth_maukar@yahoo.com.sg3","name":"Heath Akura3","password":"tester13","__v":0}
+{"_id":{"$oid":"5c302a470b7b5d2058027393"},"username":"kenneth_maukar4","email":"kenneth_maukar@yahoo.com.sg4","name":"Heath Akura4","password":"tester14","__v":0}
+{"_id":{"$oid":"5c302bb80b7b5d2058027394"},"username":"admin2","email":"admin2@admin","name":"admin2","password":"admin2","__v":0}
+{"_id":{"$oid":"5c3043d261a9742f6c64ad19"},"username":"admin01","email":"admin01@admin","name":"Admin01","password":"admin01","__v":0}
+{"_id":{"$oid":"5c32eec8104d413f84ba207a"},"username":"admin02","email":"admin02@admin","name":"admin02","password":"admin02","__v":0}
+{"_id":{"$oid":"5c33060050da850200fc0799"},"username":"johnDoe1","email":"jdoe1@gmail.com","name":"John Doe","password":"jdoe1","__v":0}
